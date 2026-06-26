@@ -38,6 +38,6 @@ android {
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.13.1")
-    implementation("androidx.appcompat:appcompat:1.7.0")
+    // No AndroidX: the game runs entirely on the Android framework + Kotlin
+    // stdlib, so it builds with only the platform SDK.
 }

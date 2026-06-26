@@ -1,13 +1,13 @@
 package com.magnetmaster.game
 
+import android.app.Activity
 import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
-import androidx.appcompat.app.AppCompatActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : Activity() {
 
     private lateinit var view: GameView
 
@@ -17,16 +17,6 @@ class MainActivity : AppCompatActivity() {
         view = GameView(this)
         setContentView(view)
         immersive()
-
-        onBackPressedDispatcher.addCallback(this,
-            object : androidx.activity.OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                    if (!view.handleBack()) {
-                        isEnabled = false
-                        onBackPressedDispatcher.onBackPressed()
-                    }
-                }
-            })
     }
 
     private fun immersive() {
@@ -52,6 +42,11 @@ class MainActivity : AppCompatActivity() {
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
         if (hasFocus) immersive()
+    }
+
+    @Suppress("DEPRECATION", "OVERRIDE_DEPRECATION")
+    override fun onBackPressed() {
+        if (!view.handleBack()) super.onBackPressed()
     }
 
     override fun onPause() {

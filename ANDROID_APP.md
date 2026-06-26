@@ -12,18 +12,34 @@ matches the "native APK" requirement and stays well under the size budget.
 
 ## Get the APK
 
-The Android SDK download host (`dl.google.com`) is blocked inside the authoring
-sandbox, so the binary is produced by **GitHub Actions** (which has full network
-access) instead of being committed.
+A prebuilt, **signed and installable** APK ships in the repo:
 
-1. Open the repo's **Actions → "Build Magnet Master APK"** run for this branch.
-2. Download the **`MagnetMaster-APK`** artifact.
-3. Install `MagnetMaster-debug.apk` on a device (enable "install unknown apps").
+```
+dist/MagnetMaster.apk      # v1.0.0 · minSdk 24 / target 34 · ~1.4 MB · v2-signed
+```
 
-`MagnetMaster-debug.apk` is signed with the debug key and installs directly.
-`MagnetMaster-release-unsigned.apk` is also produced for store-signing.
+Download it, enable "install unknown apps", and tap to install on any Android 7.0+
+device. Verify with `apksigner verify` (APK Signature Scheme v2).
 
-Push a tag (e.g. `v1.0.0`) to also publish the APKs to a GitHub Release.
+### Rebuild it yourself
+
+Two equivalent paths:
+
+1. **No Gradle / no Google SDK** (works behind locked-down networks):
+   ```bash
+   tools/local-build/build-apk.sh        # → tools/local-build/out/MagnetMaster.apk
+   ```
+   See [`tools/local-build/README.md`](./tools/local-build/README.md). Every tool
+   is fetched from a public mirror (GitHub / Maven Central / googleapis), so it
+   builds even when `dl.google.com` is blocked.
+
+2. **Standard Gradle** (needs JDK 17 + Android SDK API 34):
+   ```bash
+   ./gradlew :app:assembleDebug          # → app/build/outputs/apk/debug/app-debug.apk
+   ```
+   The included **GitHub Actions** workflow runs this on every push and uploads
+   the APK as the `MagnetMaster-APK` artifact; push a tag (e.g. `v1.0.0`) to
+   publish a GitHub Release.
 
 ## Build locally
 

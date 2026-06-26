@@ -11,3 +11,9 @@ local.properties
 *.aab
 *.keystore
 !gradle/wrapper/gradle-wrapper.jar
+# Local-build working dirs (toolchain is downloaded, not committed)
+tools/local-build/.toolchain/
+tools/local-build/.work/
+tools/local-build/out/
+# ...but DO ship the prebuilt, ready-to-install APK
+!dist/MagnetMaster.apk
