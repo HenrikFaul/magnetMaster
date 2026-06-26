@@ -1,0 +1,9 @@
+<resources>
+    <!-- Brand palette -->
+    <color name="steel_gray">#FF2B313A</color>
+    <color name="steel_darker">#FF1B2027</color>
+    <color name="electric_blue">#FF2F8DFF</color>
+    <color name="safety_orange">#FFFF7A2A</color>
+    <color name="bone">#FFF2ECE3</color>
+    <color name="black">#FF000000</color>
+</resources>
