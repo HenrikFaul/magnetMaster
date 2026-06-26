@@ -1,0 +1,26 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Horseshoe magnet centered in the 108x108 adaptive canvas safe-zone -->
+    <!-- Left (blue) pole arm -->
+    <path
+        android:fillColor="#2F8DFF"
+        android:pathData="M34,30 a20,20 0 0,0 -8,16 v22 h16 v-22 a4,4 0 0,1 8,0 v22 h16 v-22 a20,20 0 0,0 -8,-16 z" />
+    <!-- Re-draw the arc as a horseshoe: outer ring minus inner, top open -->
+    <path
+        android:fillColor="#2F8DFF"
+        android:pathData="M30,72 m0,0 a24,24 0 0,1 -4,-26 l13,4 a11,11 0 0,0 1,12 z" />
+    <!-- Right (orange) pole -->
+    <path
+        android:fillColor="#FF7A2A"
+        android:pathData="M78,72 a24,24 0 0,0 4,-26 l-13,4 a11,11 0 0,1 -1,12 z" />
+    <!-- Pole tips -->
+    <path android:fillColor="#2F8DFF" android:pathData="M26,68 h16 v8 h-16 z" />
+    <path android:fillColor="#FF7A2A" android:pathData="M66,68 h16 v8 h-16 z" />
+    <!-- Lightning bolt accent -->
+    <path
+        android:fillColor="#F2ECE3"
+        android:pathData="M56,20 l-10,18 h7 l-5,16 14,-22 h-8 z" />
+</vector>
